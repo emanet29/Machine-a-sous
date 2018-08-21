@@ -34,6 +34,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         bouton.layer.shadowOffset = CGSize(width: 4, height: 4)
         bouton.layer.shadowRadius = 4
         bouton.layer.shadowOpacity = 0.8
+        
+        while emojis.count < 50 {
+            emojis.append(contentsOf: emojis)
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -63,11 +67,36 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     @IBAction func boutonAction(_ sender: Any) {
+        label.alpha = 0
+        
         for x in (0..<picker.numberOfComponents) {
             picker.selectRow(Int(arc4random_uniform(UInt32(emojis.count))), inComponent: x, animated: true)
         }
         
+        let valeur0 = emojis[picker.selectedRow(inComponent: 0)]
+        let valeur1 = emojis[picker.selectedRow(inComponent: 1)]
+        let valeur2 = emojis[picker.selectedRow(inComponent: 2)]
+        
+        if valeur0 == valeur1 && valeur0 == valeur2 {
+            label.text = "C'est gagné !"
+        } else {
+            label.text = "Raté essaie encore"
+        }
+        
+        UIView.animate(withDuration: 1, delay: 0.5, options: .curveLinear, animations: {
+            self.label.alpha = 1
+        }, completion: nil)
+        
+        
+        
     }
+    
+    
+    
+    
+    
+    
+    
     
 }
 
