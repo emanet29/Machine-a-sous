@@ -9,17 +9,24 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var picker: UIPickerView!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var bouton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        bouton.layer.cornerRadius = 30
+        bouton.layer.shadowColor = UIColor.darkGray.cgColor
+        bouton.layer.shadowOffset = CGSize(width: 4, height: 4)
+        bouton.layer.shadowRadius = 4
+        bouton.layer.shadowOpacity = 0.8
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func boutonAction(_ sender: Any) {
+        
     }
-
-
+    
 }
 
